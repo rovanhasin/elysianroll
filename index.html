@@ -46,37 +46,15 @@
         }
       }
 
-      /* Banner */
-      .banner {
-        position: relative;
+      /* Banner below header */
+      .header-banner {
         width: 100%;
-        height: 300px; /* Adjusted height for mobile */
-        overflow: hidden;
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-          url("casino-banner.jpg") center/cover no-repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        height: 200px; /* Adjust height as needed */
+        background: url("https://via.placeholder.com/1200x400") center/cover
+          no-repeat; /* Add your banner image */
       }
 
-      .banner-text {
-        color: #ffd700;
-        font-size: 32px; /* Adjusted font size for mobile */
-        font-weight: bold;
-        text-transform: uppercase;
-        text-align: center;
-        animation: fadeIn 2s ease-in;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
+      /* Tabs Navigation */
       /* Tabs Navigation */
       nav.tabs {
         text-align: center;
@@ -85,26 +63,138 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       }
 
+      nav.tabs h2 {
+        font-size: 24px;
+        color: #ffd700;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+
+      nav.tabs .tab-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px; /* Space between buttons */
+      }
+
       nav.tabs button {
         padding: 12px 24px;
-        background-color: #ffd700;
-        color: #111;
-        border: none;
-        margin: 0 10px;
+        background-color: transparent;
+        color: #ffd700;
+        border: 2px solid transparent;
         cursor: pointer;
         font-size: 18px;
         border-radius: 5px;
         text-transform: uppercase;
         letter-spacing: 1px;
-        transition: background-color 0.3s, transform 0.3s;
+        transition: border-color 0.3s, transform 0.3s;
       }
 
       nav.tabs button.active {
-        background-color: #e6b800; /* Different color for active tab */
+        border-color: #ff4444; /* Red outline for active tab */
       }
 
       nav.tabs button:hover {
-        background-color: #e6b800;
+        border-color: #e6b800;
+        transform: scale(1.05);
+      }
+
+      /* Game Sections */
+      .game-section {
+        display: none;
+        padding: 20px;
+        max-width: 100%; /* Ensure it takes full width */
+        margin: 20px auto;
+      }
+
+      .game-section.active {
+        display: block;
+      }
+
+      .game-section h2 {
+        font-size: 32px;
+        color: #ffd700;
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      .game-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+      }
+
+      .game-item {
+        background-color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .game-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+      }
+
+      .game-item img {
+        width: 100%;
+        height: 150px; /* Fixed height for square images */
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        aspect-ratio: 1/1; /* Ensures square aspect ratio */
+      }
+
+      .game-item p {
+        font-size: 18px;
+        color: #ffd700;
+        font-weight: bold;
+      }
+
+      .game-item a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Responsive Design for Mobile */
+      @media (max-width: 768px) {
+        .header-banner {
+          height: 150px; /* Adjusted height for mobile */
+        }
+
+        .game-list {
+          grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
+        }
+
+        .game-item img {
+          height: 100px; /* Adjusted image height for smaller screens */
+        }
+
+        .game-item p {
+          font-size: 16px; /* Adjusted font size for smaller screens */
+        }
+
+        /* Adjust Tabs Navigation for Mobile */
+        nav.tabs .tab-buttons {
+          flex-direction: row; /* Ensure buttons are in a row */
+          flex-wrap: wrap; /* Allow wrapping if needed */
+        }
+
+        nav.tabs button {
+          margin: 5px; /* Adjust margin for better spacing */
+          font-size: 16px; /* Adjust font size for smaller screens */
+          padding: 10px 20px; /* Adjust padding for smaller screens */
+        }
+      }
+
+      nav.tabs button.active {
+        border-color: #ff4444; /* Red outline for active tab */
+      }
+
+      nav.tabs button:hover {
+        border-color: #e6b800;
         transform: scale(1.05);
       }
 
@@ -230,18 +320,14 @@
       }
 
       .floating-icon img {
-        width: 30px;
-        height: 30px;
+        width: 24px;
+        height: 24px;
       }
 
       /* Responsive Design for Mobile */
       @media (max-width: 768px) {
-        .banner {
-          height: 200px; /* Adjusted height for mobile */
-        }
-
-        .banner-text {
-          font-size: 24px; /* Adjusted font size for mobile */
+        .header-banner {
+          height: 150px; /* Adjusted height for mobile */
         }
 
         .game-list {
@@ -277,22 +363,24 @@
       <h1>Luxury Casino</h1>
     </header>
 
-    <!-- Banner -->
-    <div class="banner">
-      <div class="banner-text">Welcome to the Ultimate Casino Experience!</div>
-    </div>
+    <!-- Banner below header -->
+    <div class="header-banner"></div>
 
     <!-- Tabs Navigation -->
+    <!-- Tabs Navigation -->
     <nav class="tabs">
-      <button class="tab active" onclick="switchTab('player')">
-        Player Games
-      </button>
-      <button class="tab" onclick="switchTab('agent')">Agent Games</button>
+      <h2>Game Links</h2>
+      <div class="tab-buttons">
+        <button class="tab active" onclick="switchTab('player')">
+          Player Link
+        </button>
+        <button class="tab" onclick="switchTab('agent')">Agent Link</button>
+      </div>
     </nav>
 
     <!-- Player Games Section -->
     <section id="player" class="game-section active">
-      <h2>Player Games</h2>
+      <h2>Player Link</h2>
       <div class="game-list">
         <div class="game-item">
           <a href="#">
@@ -323,7 +411,7 @@
 
     <!-- Agent Games Section -->
     <section id="agent" class="game-section">
-      <h2>Agent Games</h2>
+      <h2>Agent Link</h2>
       <div class="game-list">
         <div class="game-item">
           <a href="#">
@@ -377,8 +465,15 @@
     </footer>
 
     <!-- Floating Social Icon -->
-    <a href="#" class="floating-icon">
-      <img src="facebookicon.png" alt="Facebook" />
+    <a
+      href="https://www.facebook.com/yourpage"
+      target="_blank"
+      class="floating-icon"
+    >
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/124/124010.png"
+        alt="Facebook"
+      />
     </a>
 
     <script>
