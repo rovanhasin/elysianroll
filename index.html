@@ -245,7 +245,7 @@
         }
 
         .game-list {
-          grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
+          grid-template-columns: repeat(3, 1fr); /* Three columns on mobile */
         }
 
         .game-item img {
@@ -254,6 +254,19 @@
 
         .game-item p {
           font-size: 16px; /* Adjusted font size for smaller screens */
+        }
+
+        /* Adjust Tabs Navigation for Mobile */
+        nav.tabs {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap; /* Allow wrapping if needed */
+        }
+
+        nav.tabs button {
+          margin: 5px; /* Adjust margin for better spacing */
+          font-size: 16px; /* Adjust font size for smaller screens */
+          padding: 10px 20px; /* Adjust padding for smaller screens */
         }
       }
     </style>
